@@ -5,7 +5,8 @@ cursor = conn.cursor()
 cursor.execute('''
     CREATE TABLE IF NOT EXISTS wallets (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        address TEXT NOT NULL
+        address TEXT,
+        name TEXT
     )
 ''')
 conn.commit()
