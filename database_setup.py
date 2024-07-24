@@ -1,13 +1,22 @@
 import sqlite3
-
-conn = sqlite3.connect('wallets.db')
-cursor = conn.cursor()
-cursor.execute('''
+def create_tables():
+    conn = sqlite3.connect('wallets.db')
+    cursor = conn.cursor()
+    cursor.execute('''
     CREATE TABLE IF NOT EXISTS wallets (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        address TEXT,
+        address TEXT PRIMARY KEY,
         name TEXT
     )
-''')
-conn.commit()
-conn.close()
+    ''')
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS tokens (
+        address TEXT PRIMARY KEY,
+        ticker TEXT,
+        name TEXT
+    )
+    ''')
+    conn.commit()
+    conn.close()
+
+# Вызовите эту функцию при запуске бота
+create_tables()
